@@ -28,7 +28,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-  poems_json = {
+  var poems_json = {
   "01": "Somewhere or Other\n\nBy Christina Rossetti (1830-1894)\n\nSomewhere or other there must\n   surely be\nThe face not seen, the voice not\n   heard,\nThe heart that not yet\u2014never\n   yet\u2014ah me!\nMade answer to my word.\n\nSomewhere or other, may be near\n   or far;\nPast land and sea, clean out of\n   sight;\nBeyond the wandering moon,\n   beyond the star\nThat tracks her night by night.\n\nSomewhere or other, may be far\n   or near;\nWith just a wall, a hedge,\n   between;\nWith just the last leaves of the\n   dying year\nFallen on a turf grown green.\n",
   "02": "Quatrains\n\nBy Gwendolyn Bennett (1902-1981)\n\n1\nBrushes and paints are all I\n   have\nTo speak the music in my soul--\nWhile silently there laughs at\n   me\nA copper jar beside a pale green\n   bowl.\n\n2\nHow strange that grass should\n   sing--\nGrass is so still a thing ...\nAnd strange the swift surprise\n   of snow\nSo soft it falls and slow.\n",
   "03": "manh\u00e3\n\nBy Marc-Anthony Valle, '22\n\nBy the time I wake, the sun is\n   already on its third cup of\n   black coffee.\nMy nose dry as farofa.\nI slept under the air\n   conditioner.\nMy vov\u00f3 is asleep still.\nMoving her is labor we all\n   shoulder happily.\nMy oh my oh my how she could\n   love.\nHer skin soft palm leaves\n   sunbathing on their back.\nI felt my bruises decolor and\n   scratches cauterize when she\n   embraced me.\nI wrap her palms around my\n   blistered back.\nMy vov\u00f4 is reading now. As he\n   always did.\nWall of leather-bound books\n   behind him, well-worn and\n   colored, as his own binding.\nI long to carry him home with\n   me, toting household gods whose\n   names I can\u2019t decipher.\nTake him to where the sun is\n   blocked by evergreens.\nCarry my grandfather like\n   Anchises.\n",
@@ -61,8 +61,16 @@ $(document).ready(function(){
   "30": "My life has been the poem I\n   would have writ\n\nBy Henry David Thoreau (1817-1862)\n\nMy life has been the poem I\n   would have writ\nBut I could not both live and\n   utter it.\n"
 }
 
+function n(n){
+    return n > 9 ? "" + n: "0" + n;
+}
+
 $("#pb-button").click(function(){
-  alert("hello");
+  var d = new Date();
+  var day = n(d.getDate());
+  var string = "Today is April "+ day + " 2020.\nToday's poem is:\n\n" + poems_json[day]
+  
+  $("#poem_container").html(string.replace(/\n/g, "<br />"));
 
 });
 
@@ -78,6 +86,9 @@ $("#pb-button").click(function(){
 <h2>Socially Distant Poembot</h2>
 
 <button class="button" id="pb-button">Give Me a Poem</button>
+<br />
+<br />
+<div id="poem_container"></div>
 
 </body>
 </html>
