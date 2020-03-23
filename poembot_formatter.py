@@ -28,13 +28,13 @@ def split_poem(st):
 
 import csv
 
-with open("19poems.csv") as fh:
+with open("2020_poems.csv") as fh:
     reader = csv.DictReader(fh)
     for line in reader:
-        fixed_text = split_poem(line["Text of poem"])
-        author = split_string(line["Author"], limit=32)
+        fixed_text = split_poem(line["Text"])
+        author = split_string(line["Author + date"], limit=32)
         title = split_string(line["Title"])
-        date = line["Date"].zfill(2)
+        date = line["Day in April"].zfill(2)
         print(date)
         with open("poems/{}.txt".format(date), "w") as fh2:
             for line2 in title:
