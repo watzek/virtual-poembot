@@ -1,4 +1,4 @@
-def split_string(str, limit=32, sep=" "):
+def split_string(str, limit=3200, sep=" "):
     words = str.split()
     try:
         if max(map(len, words)) > limit:
@@ -32,7 +32,7 @@ with open("2020_poems.csv") as fh:
     reader = csv.DictReader(fh)
     for line in reader:
         fixed_text = split_poem(line["Text"])
-        author = split_string(line["Author + date"], limit=32)
+        author = split_string(line["Author + date"], limit=3200)
         title = split_string(line["Title"])
         date = line["Day in April"].zfill(2)
         print(date)
