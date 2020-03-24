@@ -40,7 +40,6 @@ with open("2020_poems.csv") as fh:
             for line2 in title:
                 fh2.write(line2+"\n")
             fh2.write("\n")
-            fh2.write("By ")
             for i , line2 in enumerate(author):
                 fh2.write(line2+ "\n")
             fh2.write("\n")
